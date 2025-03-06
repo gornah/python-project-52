@@ -5,7 +5,7 @@ install:
 migrate:
 	uv run python3 manage.py migrate
 
-start:
+dev:
 	uv run python3 manage.py runserver
 
 shell:
@@ -15,4 +15,8 @@ build:
 	./build.sh
 
 render-start:
-	gunicorn task_manager.wsgi
+	uv run gunicorn task_manager.wsgi
+
+PORT ?= 8000
+start:
+	uv run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi
