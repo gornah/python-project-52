@@ -14,6 +14,9 @@ shell:
 build:
 	./build.sh
 
-PORT ?= 8000
 render-start:
+	uv run gunicorn task_manager.wsgi
+
+PORT ?= 8000
+start:
 	uv run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi
