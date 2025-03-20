@@ -1,12 +1,10 @@
 from django import forms
-from django.contrib.auth.hashers import make_password
-from django.core.validators import MinLengthValidator
+from django.contrib.auth.forms import UserCreationForm
+
 from .models import User
 
 
-class UserForm(forms.ModelForm):
-
-    pass_min_len = 3
+class UserForm(UserCreationForm):
 
     first_name = forms.CharField(
         max_length=150,
@@ -42,9 +40,6 @@ class UserForm(forms.ModelForm):
     )
 
     password1 = forms.CharField(
-        validators=[
-            MinLengthValidator(pass_min_len, "Пароль слишком короткий"),
-        ],
         label="Пароль",
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
@@ -64,7 +59,7 @@ class UserForm(forms.ModelForm):
         help_text="Для подтверждения введите, пожалуйста, пароль ещё раз."
     )
 
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = User
         fields = (
             'first_name',
@@ -72,33 +67,11 @@ class UserForm(forms.ModelForm):
             'username',
             'password1',
             'password2'
-        )
+            )
 
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
 
-        if User.objects.filter(username=username).exclude(id=self.instance.id).exists():  # noqa: E501
-            raise forms.ValidationError('Пользователь с таким именем уже существует.')  # noqa: E501
-        return username
-
-    def clean(self):
-        cleaned_data = super().clean()
-        password1 = cleaned_data.get('password1')
-        password2 = cleaned_data.get('password2')
-
-        if password1 and password2 and password1 != password2:
-            self.add_error('password2', 'Пароли не совпадают.')
-
-        return cleaned_data
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-
-        password = self.cleaned_data.get('password1')
-        if password:
-            user.password = make_password(password)
-
-        if commit:
-            user.save()
-
-        return user
+def clean_username(self):
+    username = self.cleaned_data.get('username')
+    if User.objects.filter(username=username).exclude(id=self.instance.id).exists():  # noqa: E501
+        raise forms.ValidationError('Пользователь с таким именем уже существует.')  # noqa: E501
+    return username

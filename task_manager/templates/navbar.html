@@ -7,18 +7,46 @@
     <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/users/">Пользователи</a>
-            </li>        
+                <a class="nav-link" href="{% url 'users' %}">Пользователи</a>
+            </li>
+            {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Статусы</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Метки</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Задачи</a>
+                </li>
+
+            {% endif %}       
         </ul>
 
-        <ul class="navbar-nav"> 
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+
             <li class="nav-item">
-                <a class="nav-link" href="/login/">Вход</a>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link">Выход</button>
+                </form>
+            </li>
+
+            {% else %} 
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Вход</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/users/create/">Регистрация</a>
+                <a class="nav-link" href="{% url 'user_create' %}">Регистрация</a>
             </li>
+
+            {% endif %}
         </ul>
     </div>
 </nav>
