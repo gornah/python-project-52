@@ -8,6 +8,9 @@ migrate:
 dev:
 	uv run python3 manage.py runserver
 
+test:
+	uv run python manage.py test --verbosity=2
+
 shell:
 	uv run python3 manage.py shell
 

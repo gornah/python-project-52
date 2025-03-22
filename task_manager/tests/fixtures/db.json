@@ -1,0 +1,12 @@
+[
+    {
+      "model": "users.user",
+      "pk": 1,
+      "fields": {
+        "username": "bandit",
+        "first_name": "Anton",
+        "last_name": "Chigur",
+        "password": "123$"
+      }
+    }
+  ]
