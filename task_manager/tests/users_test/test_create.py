@@ -3,6 +3,8 @@ from django.urls import reverse_lazy as reverse
 from django.test import TestCase
 import os
 from task_manager.users.models import User
+
+
 FIXTURE_DIR = os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
     '../fixtures'
