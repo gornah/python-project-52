@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="my-4">{{ header }}</h1>
+
+    <a class="btn btn-primary mb-3" href="{% url 'label_create' %}">Создать метку</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Дата создания</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if labels %}
+                {% for label in labels %}
+                    <tr>
+                        <td>{{ label.id }}</td>
+                        <td>{{ label.name }}</td>
+                        <td>{{ label.date_created|date:"d.m.Y H:i" }}</td>
+                        <td>
+                          <a href="{% url 'label_update' label.id %}">Изменить</a>
+                          <br>
+                          <a href="{% url 'label_delete' label.id %}">Удалить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock content %}

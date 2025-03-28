@@ -1,0 +1,13 @@
+<div class="card mb-3">
+    <div class="card-body bg-light">
+      <form class="form-inline center" method="get">
+        {% for field in filter.form %}
+          <div class="mb-3">
+            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+          </div>
+        {% endfor %}
+        <input class="btn btn-primary" type="submit" value="Показать">
+      </form>
+    </div>
+  </div>
