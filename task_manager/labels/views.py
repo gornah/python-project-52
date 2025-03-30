@@ -8,7 +8,9 @@ from .forms import LabelForm
 
 
 class LabelsListView(AuthRequiredMixin, ListView):
-
+    '''
+    Show all Labels. User authorization is required
+    '''
     template_name = 'labels/list.html'
     model = Label
     context_object_name = 'labels'
@@ -18,7 +20,9 @@ class LabelsListView(AuthRequiredMixin, ListView):
 
 
 class LabelCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
-
+    '''
+    Create new Label. User authorization is required
+    '''
     template_name = 'labels/create.html'
     model = Label
     form_class = LabelForm
@@ -31,7 +35,9 @@ class LabelCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 class LabelUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
-
+    '''
+    Edit existing Label. User authorization is required
+    '''
     template_name = 'labels/create.html'
     model = Label
     form_class = LabelForm
@@ -45,7 +51,10 @@ class LabelUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class LabelDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
                       SuccessMessageMixin, DeleteView):
-
+    '''
+    Delete existing Label. User authorization is required
+    If the label is associated with at least one task it cannot be deleted.
+    '''
     template_name = 'labels/delete.html'
     model = Label
     success_url = reverse_lazy('labels')

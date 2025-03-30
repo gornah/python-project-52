@@ -8,7 +8,9 @@ from .forms import StatusForm
 
 
 class StatusesListView(AuthRequiredMixin, ListView):
-
+    '''
+    Show all Statuses. User authorization is required
+    '''
     template_name = 'statuses/list.html'
     model = Status
     context_object_name = 'statuses'
@@ -18,7 +20,9 @@ class StatusesListView(AuthRequiredMixin, ListView):
 
 
 class StatusCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
-
+    '''
+    Create new Status. User authorization is required
+    '''
     template_name = 'statuses/create.html'
     model = Status
     form_class = StatusForm
@@ -31,7 +35,9 @@ class StatusCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
-
+    '''
+    Edit existing Status. User authorization is required
+    '''
     template_name = 'statuses/create.html'
     model = Status
     form_class = StatusForm
@@ -45,7 +51,10 @@ class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
                        SuccessMessageMixin, DeleteView):
-
+    '''
+    Delete existing Status. User authorization is required
+    If the status is associated with at least one task it cannot be deleted.
+    '''
     template_name = 'statuses/delete.html'
     model = Status
     success_url = reverse_lazy('statuses')

@@ -30,7 +30,7 @@ class Modify(TransactionTestCase):
 
     def test_modify_redirect_after_logging(self):
 
-        user = User.objects.all().first()
+        user = User.objects.first()
         self.client.force_login(user=user)
         response = self.client.post(
             reverse(
@@ -48,7 +48,7 @@ class Modify(TransactionTestCase):
 
     def test_modify_only_himself(self):
         self.assertEqual(User.objects.all().count(), 1)
-        user1 = User.objects.all().first()
+        user1 = User.objects.first()
         testuser = User.objects.create_user(username='john', password='smith')
         self.assertEqual(User.objects.all().count(), 2)
 

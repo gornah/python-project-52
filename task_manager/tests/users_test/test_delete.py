@@ -1,8 +1,6 @@
 from django.urls import reverse_lazy as reverse
 from django.test import TransactionTestCase
 from task_manager.users.models import User
-# from task_manager.statuses.models import Status
-# from task_manager.tasks.models import Task
 
 
 class Delete(TransactionTestCase):
@@ -21,7 +19,7 @@ class Delete(TransactionTestCase):
 
     def test_delete_only_himself(self):
 
-        user1 = User.objects.all().first()
+        user1 = User.objects.first()
 
         user2 = User.objects.create_user(username='john', password='smith')
 

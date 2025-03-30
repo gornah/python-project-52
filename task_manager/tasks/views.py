@@ -11,7 +11,9 @@ from .filters import TaskFilter
 
 
 class TasksListView(AuthRequiredMixin, FilterView):
-
+    '''
+    Show all Tasks. User authorization is required
+    '''
     template_name = 'tasks/list.html'
     model = Task
     filterset_class = TaskFilter
@@ -22,7 +24,9 @@ class TasksListView(AuthRequiredMixin, FilterView):
 
 
 class TaskDetailView(AuthRequiredMixin, DetailView):
-
+    '''
+    Show Task details. User authorization is required
+    '''
     template_name = 'tasks/detail.html'
     model = Task
     context_object_name = 'task'
@@ -32,7 +36,9 @@ class TaskDetailView(AuthRequiredMixin, DetailView):
 
 
 class TaskCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
-
+    '''
+    Create new Task. User authorization is required
+    '''
     template_name = 'tasks/create.html'
     model = Task
     form_class = TaskForm
@@ -51,7 +57,9 @@ class TaskCreateView(AuthRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 class TaskUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
-
+    '''
+    Edit existing Task. User authorization is required
+    '''
     template_name = 'tasks/create.html'
     model = Task
     form_class = TaskForm
@@ -65,7 +73,10 @@ class TaskUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class TaskDeleteView(AuthRequiredMixin, AuthorDeletionMixin,
                      SuccessMessageMixin, DeleteView):
-
+    '''
+    Delete existing Task. User authorization is required
+    Only the author can delete his tasks.
+    '''
     template_name = 'tasks/delete.html'
     model = Task
     success_url = reverse_lazy('tasks')

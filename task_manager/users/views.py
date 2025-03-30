@@ -14,12 +14,18 @@ from .forms import UserForm
 
 
 class UsersListView(ListView):
+    '''
+    Show all Users
+    '''
     template_name = 'users/list.html'
     model = User
     context_object_name = 'users'
 
 
 class UserCreateView(MessageMixin, CreateView):
+    '''
+    Create new User
+    '''
     template_name = 'users/create.html'
     model = User
     form_class = UserForm
@@ -37,6 +43,10 @@ class UserCreateView(MessageMixin, CreateView):
 
 class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
                      MessageMixin, UpdateView):
+    '''
+    Edit existing User. User authorization is required
+    User can only edit himself
+    '''
     template_name = 'users/create.html'
     model = User
     form_class = UserForm
@@ -60,7 +70,11 @@ class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
 
 class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
                      DeleteProtectionMixin, SuccessMessageMixin, DeleteView):
-
+    '''
+    Delete existing User. User authorization is required
+    User can only delete himself
+    User cannot be deleted if associated with a task
+    '''
     template_name = 'users/delete.html'
     model = User
     success_url = reverse_lazy('users')
