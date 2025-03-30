@@ -11,6 +11,9 @@ dev:
 test:
 	uv run python manage.py test --verbosity=2
 
+lint:
+	uv run ruff check --fix .
+
 shell:
 	uv run python3 manage.py shell
 
