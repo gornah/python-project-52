@@ -12,7 +12,7 @@ class DeleteTask(TransactionTestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_delete_task(self):
-        user = User.objects.all().first()
+        user = User.objects.first()
         self.client.force_login(user=user)
         response = self.client.get(reverse('task_delete', kwargs={'pk': 1}))
         self.assertEqual(response.status_code, 200)

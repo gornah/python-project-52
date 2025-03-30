@@ -69,24 +69,3 @@ class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
     permission_url = reverse_lazy('users')
     protected_message = 'Невозможно удалить пользователя.'
     protected_url = reverse_lazy('users')
-
-# class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
-#                      DeleteProtectionMixin, MessageMixin, DeleteView):
-#     template_name = 'users/delete.html'
-#     model = User
-#     success_url = reverse_lazy('users')
-#     permission_message = 'У вас нет прав для удаления другого пользователя.'
-#     permission_url = reverse_lazy('users')
-#     protected_message = 'Невозможно удалить пользователя.'
-#     protected_url = reverse_lazy('users')
-
-#     def delete(self, request, *args, **kwargs):
-#         print('Удаление пошло')
-#         response = super().delete(request, *args, **kwargs)
-#         print('Удаление выполнено')
-#         self.success(request, 'Пользователь успешно удален')
-#         return response
-
-#     def handle_no_permission(self):
-#         self.error(self.request, self.permission_message)
-#         return redirect(self.permission_url)

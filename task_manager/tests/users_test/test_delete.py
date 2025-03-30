@@ -49,25 +49,3 @@ class Delete(TransactionTestCase):
 
         self.assertEqual(User.objects.all().count(), 1)
         self.assertNotIn(user2, User.objects.all())
-
-    # def test_delete_only_himself(self):
-    #     user1 = User.objects.all().first()
-    #     user2 = User.objects.create_user(username='john', password='smith')
-    #     self.client.login(username='john', password='smith')
-    #     response = self.client.post(
-    #         reverse(
-    #             'user_delete',
-    #             kwargs={'pk': user1.id}
-    #         )
-    #     )
-    #     self.assertRedirects(response, reverse('users'))
-    #     self.assertIn(user1, User.objects.all())
-    #     self.assertEqual(User.objects.all().count(), 2)
-    #     self.client.post(
-    #         reverse(
-    #             'user_delete',
-    #             kwargs={'pk': user2.id}
-    #         )
-    #     )
-    #     self.assertEqual(User.objects.all().count(), 1)
-    #     self.assertNotIn(user2, User.objects.all())

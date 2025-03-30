@@ -1,0 +1,54 @@
+[
+    {
+      "model": "users.user",
+      "pk": 1,
+      "fields": {
+        "first_name": "John",
+        "last_name": "Connor",
+        "username": "terminator",
+        "password": "hastalawista"
+      }
+    },
+    {
+      "model": "users.user",
+      "pk": 1,
+      "fields": {
+      }
+    },
+    {
+       "model": "labels.label",
+       "pk": 1,
+       "fields": {
+         "date_created": "2022-12-05T08:41:56.579Z",
+         "name": "top"
+       }
+     },
+    {
+      "model": "statuses.status",
+      "pk": 1,
+      "fields": {
+        "date_created": "2022-12-08T19:38:57.300Z",
+        "name": "test status"
+      }
+    },
+    {
+      "model": "tasks.task",
+      "pk": 1,
+      "fields": {
+        "date_created": "2022-12-08T19:50:55.882Z",
+        "name": "test task",
+        "description": "some desccription",
+        "author": 1,
+        "status": 1,
+        "executor": 1
+      }
+    },
+    {
+      "model": "tasks.tasklabelrelation",
+      "pk": 3,
+      "fields": {
+        "task": 1,
+        "label": 1
+      }
+    }
+  ]

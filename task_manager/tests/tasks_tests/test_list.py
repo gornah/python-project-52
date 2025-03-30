@@ -12,12 +12,12 @@ class List(TransactionTestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_list_with_login(self):
-        user = User.objects.all().first()
+        user = User.objects.first()
         self.client.force_login(user=user)
         response = self.client.get(reverse('tasks'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(Task.objects.all().count(), 1)
-        task = Task.objects.all().first()
+        task = Task.objects.first()
         task.delete()
         self.assertEqual(Task.objects.all().count(), 0)
         response = self.client.get(reverse('tasks'))

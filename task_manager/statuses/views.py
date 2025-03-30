@@ -50,7 +50,7 @@ class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
     model = Status
     success_url = reverse_lazy('statuses')
     success_message = 'Статус успешно удален'
-    protected_message = 'Невозможно удалить статус, потому что он используется'
+    protected_message = 'Невозможно удалить статус, он используется'
     protected_url = reverse_lazy('statuses')
     extra_context = {
         'header': 'Удаление статуса',

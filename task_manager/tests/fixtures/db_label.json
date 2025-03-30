@@ -6,7 +6,7 @@
         "first_name": "John",
         "last_name": "Connor",
         "username": "terminator",
-        "password": "pbkdf2_sha256$390000$FYpJwDwyepioDOtb4ieK57$dKDAWrjZB61wihLJ9XCLzvzqBJVQNsjCSMLZp87adh8="
+        "password": "hastalawista"
       }
     },
     {
@@ -16,11 +16,11 @@
       }
     },
     {
-       "model": "statuses.status",
+       "model": "labels.label",
        "pk": 1,
        "fields": {
          "date_created": "2022-12-05T08:41:56.579Z",
-         "name": "init"
+         "name": "top"
        }
      }
   ]
