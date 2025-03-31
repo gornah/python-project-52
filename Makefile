@@ -3,7 +3,7 @@ install:
 	uv sync
 
 migrate:
-	poetry run python manage.py makemigrations
+	uv run python3 manage.py makemigrations
 	uv run python3 manage.py migrate
 
 dev:
