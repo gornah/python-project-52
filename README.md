@@ -4,5 +4,8 @@
 ### Maintainability
 [![Maintainability](https://qlty.sh/badges/cf0377f1-cef6-4660-9eb7-f1df30b0e090/maintainability.svg)](https://qlty.sh/gh/gornah/projects/python-project-52)
 
+### Code Coverage
+[![Code Coverage](https://qlty.sh/badges/cf0377f1-cef6-4660-9eb7-f1df30b0e090/test_coverage.svg)](https://qlty.sh/gh/gornah/projects/python-project-52)
+
 ### Render.com
 https://task-manager-ulqx.onrender.com
