@@ -81,7 +81,7 @@ class TaskDeleteView(AuthRequiredMixin, AuthorDeletionMixin,
     model = Task
     success_url = reverse_lazy('tasks')
     success_message = 'Задача успешно удалена'
-    author_message = 'Задача может быть удалена только ее автором'
+    author_message = 'Задачу может удалить только ее автор'
     author_url = reverse_lazy('tasks')
     extra_context = {
         'header': 'Удаление задачи',

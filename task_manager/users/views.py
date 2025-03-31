@@ -79,7 +79,7 @@ class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
     model = User
     success_url = reverse_lazy('users')
     success_message = 'Пользователь успешно удален'
-    permission_message = 'У вас нет прав для удаления другого пользователя.'
+    permission_message = 'У вас нет прав для изменения другого пользователя.'
     permission_url = reverse_lazy('users')
     protected_message = 'Невозможно удалить пользователя.'
     protected_url = reverse_lazy('users')
