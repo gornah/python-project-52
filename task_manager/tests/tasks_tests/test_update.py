@@ -31,7 +31,7 @@ class UpdateTask(TransactionTestCase):
             'name': 'test_task',
             'status': status.id,
             'executor': user2.id,
-            'author': user.id,
+            'description': 'new description'
         }
 
         response = self.client.post(

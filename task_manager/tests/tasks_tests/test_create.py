@@ -26,7 +26,8 @@ class Create(TestCase):
             {
                 'name': 'test task',
                 'status': status.id,
-                'executor': user.id
+                'executor': user.id,
+                'description': 'test description'
                 }
         )
 
