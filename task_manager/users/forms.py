@@ -12,6 +12,7 @@ class UserForm(forms.ModelForm):
         max_length=150,
         required=True,
         label="Имя",
+        label_suffix='',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Имя',
@@ -22,6 +23,7 @@ class UserForm(forms.ModelForm):
         max_length=150,
         required=True,
         label="Фамилия",
+        label_suffix='',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Фамилия',
@@ -33,6 +35,7 @@ class UserForm(forms.ModelForm):
         max_length=150,
         required=True,
         label="Имя пользователя",
+        label_suffix='',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Имя пользователя',
@@ -46,6 +49,7 @@ class UserForm(forms.ModelForm):
             MinLengthValidator(pass_min_len, "Пароль слишком короткий"),
         ],
         label="Пароль",
+        label_suffix='',
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Пароль',
@@ -56,6 +60,7 @@ class UserForm(forms.ModelForm):
 
     password2 = forms.CharField(
         label="Подтверждение пароля",
+        label_suffix='',
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Подтверждение пароля',
