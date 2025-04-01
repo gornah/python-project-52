@@ -22,10 +22,10 @@ class UsersListView(ListView):
     context_object_name = 'users'
 
 
-class UserCreateView(MessageMixin, CreateView):
-    '''
+class UserCreateView(SuccessMessageMixin, CreateView):
+    """
     Create new User
-    '''
+    """
     template_name = 'users/create.html'
     model = User
     form_class = UserForm
@@ -34,11 +34,25 @@ class UserCreateView(MessageMixin, CreateView):
         'header': 'Регистрация',
         'button_title': 'Зарегистрировать',
     }
+    success_message = "Пользователь успешно зарегистрирован"
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        self.success(self.request, 'Пользователь успешно зарегистрирован')
-        return response
+# class UserCreateView(MessageMixin, CreateView):
+#     '''
+#     Create new User
+#     '''
+#     template_name = 'users/create.html'
+#     model = User
+#     form_class = UserForm
+#     success_url = reverse_lazy('login')
+#     extra_context = {
+#         'header': 'Регистрация',
+#         'button_title': 'Зарегистрировать',
+#     }
+
+#     def form_valid(self, form):
+#         response = super().form_valid(form)
+#         self.success(self.request, 'Пользователь успешно зарегистрирован')
+#         return response
 
 
 class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
