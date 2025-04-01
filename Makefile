@@ -16,8 +16,8 @@ lint:
 	uv run ruff check --fix .
 
 coverage:
-	uv rub coverage run --source='.' manage.py test
-	coverage lcov -o reports/lcov.info
+	uv run coverage run --source='.' manage.py test
+	uv run coverage lcov -o reports/lcov.info
 
 shell:
 	uv run python3 manage.py shell
