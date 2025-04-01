@@ -41,9 +41,7 @@ jobs:
         run: make test
       
       - name: Run tests with coverage
-        run: |
-          coverage run --source='.' manage.py test
-          coverage lcov -o reports/lcov.info
+        run: make coverage
 
       - uses: qltysh/qlty-action/coverage@main
         with:
