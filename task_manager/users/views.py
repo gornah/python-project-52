@@ -1,5 +1,4 @@
 from django.urls import reverse_lazy
-# from django.shortcuts import redirect
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
@@ -7,7 +6,6 @@ from task_manager.mixins import (
     AuthRequiredMixin,
     UserPermissionMixin,
     DeleteProtectionMixin,
-    # MessageMixin
 )
 from .models import User
 from .forms import UserForm
@@ -36,24 +34,6 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     }
     success_message = "Пользователь успешно зарегистрирован"
 
-# class UserCreateView(MessageMixin, CreateView):
-#     '''
-#     Create new User
-#     '''
-#     template_name = 'users/create.html'
-#     model = User
-#     form_class = UserForm
-#     success_url = reverse_lazy('login')
-#     extra_context = {
-#         'header': 'Регистрация',
-#         'button_title': 'Зарегистрировать',
-#     }
-
-#     def form_valid(self, form):
-#         response = super().form_valid(form)
-#         self.success(self.request, 'Пользователь успешно зарегистрирован')
-#         return response
-
 
 class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
                      SuccessMessageMixin, UpdateView):
@@ -72,17 +52,6 @@ class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
         'header': 'Изменение пользователя',
         'button_title': 'Изменить',
     }
-    # permission_message = 'У вас нет прав для изменения другого пользователя.'
-    # permission_url = reverse_lazy('users')
-
-    # def form_valid(self, form):
-    #     response = super().form_valid(form)
-    #     self.success(self.request, 'Пользователь успешно изменен')
-    #     return response
-
-    # def handle_no_permission(self):
-    #     self.error(self.request, self.permission_message)
-    #     return redirect(self.permission_url)
 
 
 class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
