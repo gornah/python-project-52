@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+# from django.shortcuts import redirect
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
@@ -7,7 +7,7 @@ from task_manager.mixins import (
     AuthRequiredMixin,
     UserPermissionMixin,
     DeleteProtectionMixin,
-    MessageMixin
+    # MessageMixin
 )
 from .models import User
 from .forms import UserForm
@@ -56,7 +56,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 
 class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
-                     MessageMixin, UpdateView):
+                     SuccessMessageMixin, UpdateView):
     '''
     Edit existing User. User authorization is required
     User can only edit himself
@@ -65,21 +65,24 @@ class UserUpdateView(AuthRequiredMixin, UserPermissionMixin,
     model = User
     form_class = UserForm
     success_url = reverse_lazy('users')
+    success_message = 'Пользователь успешно изменен'
+    permission_message = 'У вас нет прав для изменения другого пользователя.'
+    permission_url = reverse_lazy('users')
     extra_context = {
         'header': 'Изменение пользователя',
         'button_title': 'Изменить',
     }
-    permission_message = 'У вас нет прав для изменения другого пользователя.'
-    permission_url = reverse_lazy('users')
+    # permission_message = 'У вас нет прав для изменения другого пользователя.'
+    # permission_url = reverse_lazy('users')
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        self.success(self.request, 'Пользователь успешно изменен')
-        return response
+    # def form_valid(self, form):
+    #     response = super().form_valid(form)
+    #     self.success(self.request, 'Пользователь успешно изменен')
+    #     return response
 
-    def handle_no_permission(self):
-        self.error(self.request, self.permission_message)
-        return redirect(self.permission_url)
+    # def handle_no_permission(self):
+    #     self.error(self.request, self.permission_message)
+    #     return redirect(self.permission_url)
 
 
 class UserDeleteView(AuthRequiredMixin, UserPermissionMixin,
